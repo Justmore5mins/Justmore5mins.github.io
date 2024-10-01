@@ -1,0 +1,26 @@
+button {
+    border: 0;
+    background-color: transparent;
+    width: 388px;
+}
+
+span {
+    font-size: 30px;
+}
+
+img {
+    position: relative;
+    border-radius: 15%;
+    width: 380px;
+    height: 380px;
+}
+
+div{
+    width: 388px;
+}
+
+@media only screen and (max-width: 768px) {
+    span{
+        font-size: 30px;
+    }
+}
