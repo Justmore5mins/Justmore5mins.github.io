@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+function downloadFile() {
+    fetch(`${location.port}/biology.pdf`)
+    .then(response => response.blob())
+    .then(blob => {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = '生物筆記.pdf';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    })
+    .catch(error => console.error('Error fetching PDF:', error));
+}
+
+
+    </script>
+    <title>筆記下載</title>
+</head>
+<body>
+    <button type="button" onclick="downloadFile()">已閱讀創用CC授權條款</button><a href="https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode.zh-hant">協議內容</a>
+    <div id="download">
+        <iframe id="my_iframe" style="display:none;"></iframe>
+    </div>
+</body>
+</html>
