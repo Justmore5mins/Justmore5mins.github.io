@@ -23,6 +23,9 @@
             })
             .catch(error => console.error('Error fetching PDF:', error));
         }
+        function addbutton(){
+            document.getElementById('download').innerHTML = `<button onclick='downloadFile()'>下載</button>`
+        }
     </script>
     <style>
         h3 select{display: inline;}
@@ -42,6 +45,7 @@
         <option value="01">第一版</option>
     </select>
     <br>
-    <button type="button" onclick="downloadFile()">已閱讀創用CC授權條款</button><a href="https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode.zh-hant">協議內容</a>
+    <button type="button" onclick="addbutton()">已閱讀創用CC授權條款</button><a href="https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode.zh-hant">協議內容</a>
+    <div id="download"></div>
 </body>
 </html>
