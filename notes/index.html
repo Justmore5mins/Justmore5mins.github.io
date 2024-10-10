@@ -8,7 +8,7 @@
             const semester = document.getElementById("semester").value
                 const exam = document.getElementById("exam").value
                 const version = document.getElementById("version").value
-            fetch(`${location.port}/${semester}${exam}${version}.pdf`)
+            fetch(`${location.href}/${semester}${exam}${version}.pdf`)
             .then(response => response.blob())
             .then(blob => {
                 const url = URL.createObjectURL(blob);
