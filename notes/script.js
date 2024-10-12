@@ -24,31 +24,20 @@ window.onload = function(){
 }
 
 function upload(){
-    const FileInput = document.getElementById('fileInput');
-    const uploadForm = document.getElementById("uploadForm")
-
-    uploadForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-        const file = FileInput.files[0];
-        if(file){
-            const formdata = new FormData("file",file)
-            formdata.append("filename",file.name)
-            fetch(`${location.href}/documents`, {
-                method: "POST",
-                body: formdata,
-                headers: {
-                    "Accepts":"multipart/form-data"                    
-                }
-            })
-            .then(res => res.json())
-            .then(res => {
-                console.log('data')
-            })
-            .catch(err => {
-                console.error(err)
-            })
-        }else{
-            console.log("Please select the file to upload")
-        }
-    })
+    const file = document.getElementById("uploadfile").files[0]
+    if(file){
+        const formdata = new FormData()
+        formdata.append("file",file)
+        formdata.append("filename",file.name)
+        fetch(`${location.protocol}//${location.hostname}:404/upload`,{
+            method:"POST",
+            body:formdata
+        })
+        .then((res) => {
+            console.log(res)
+        })
+        .catch((err) => {
+            console.error(err)
+        })
+    }
 }
