@@ -16,7 +16,7 @@
                 
                 const a = document.createElement('a')
                 a.href = url;
-                a.download = `${subject}$${semester}${exam}${version}.pdf`;
+                a.download = `${subject}${semester}${exam}${version}.pdf`;
                 document.body.appendChild(a);
                 a.click();
                 document.body.removeChild(a);
@@ -28,10 +28,13 @@
             document.getElementById('download').innerHTML = `<button onclick='downloadFile()'>下載</button>`
         }
         function login(){
+            const users = {"Justmore5mins":{"password":"Notes@chshs108","Permission":"author"},
+                            "Hsiao Hui":{"password":"biology","Permission":"teacher"}}
             const username = prompt("請輸入帳號","username@example.com")
             const password = prompt("請輸入密碼","12345678")
-            if(username === "Justmore5mins" && password === "Notes@chshs108"){
-                location.href = "backstage.html"
+            console.log(username,password)
+            if(Object.keys(users).includes(username) && password === users[username]["password"]){
+                location.href = `backstage.html?per=${users[username]["Permission"]}`
             }else{
                 alert("帳號或密碼錯誤")
             }
@@ -47,7 +50,7 @@
     <button onclick="login()">後台登入</button>
     <h2>正式版</h2>
     <select name="科目" id="subject">
-        <option value="b">生物</option>
+        <option value="bi">生物</option>
     </select>
     <select name="學期" id="semester">
         <option value="113">113</option>

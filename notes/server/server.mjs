@@ -1,6 +1,7 @@
 import express from "express"
 import multer from "multer"
 import cors from "cors"
+import fs from "fs"
 
 const app = express()
 app.use(cors())
@@ -19,6 +20,10 @@ app.post("/upload",upload.single("file"), (req,res) =>{
     if(req.file){
         console.log(`File ${req.file.originalname} uploaded successfully`)
         console.log(req.file,req.body)
+        const data = JSON.parse(fs.readFileSync("filelist.json","utf-8"))
+        data.push(req.file.originalname)
+        fs.writeFileSync("filelist.json",JSON.stringify(data))
+        
         res.send("File uploaded successfully")
     }else{
         console.error("Error uploading file", req.fileValidationError)
