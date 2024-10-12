@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文件管理</title>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <h2>現有檔案列表</h2>
+    <div id="filelist"></div>
+    <p>在檔案上傳的時候須遵守命名規範以便整理</p>
+    <form id="uploadForm" action="backstage.html" method="POST" enctype="multipart/form-data">
+        <input type="file" id="fileInput" name="file">
+        <button type="submit">Upload</button>
+    </form>
+    
+    </form>
+    <button style=" display: inline;" onclick="deletefiles()">刪除檔案</button>
+</body>
+</html>

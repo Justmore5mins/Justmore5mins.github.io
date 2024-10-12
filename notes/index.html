@@ -5,17 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>
         function downloadFile() {
+            const subject = document.getElementById("subject").value
             const semester = document.getElementById("semester").value
-                const exam = document.getElementById("exam").value
-                const version = document.getElementById("version").value
-            fetch(`${location.href}/${semester}${exam}${version}.pdf`)
+            const exam = document.getElementById("exam").value
+            const version = document.getElementById("version").value
+            fetch(`${location.href}/documents/${subject}${semester}${exam}${version}.pdf`)
             .then(response => response.blob())
             .then(blob => {
                 const url = URL.createObjectURL(blob);
                 
                 const a = document.createElement('a')
                 a.href = url;
-                a.download = `${semester}${exam}${version}.pdf`;
+                a.download = `${subject}$${semester}${exam}${version}.pdf`;
                 document.body.appendChild(a);
                 a.click();
                 document.body.removeChild(a);
@@ -26,6 +27,13 @@
         function addbutton(){
             document.getElementById('download').innerHTML = `<button onclick='downloadFile()'>下載</button>`
         }
+        function login(){
+            const username = prompt("請輸入帳號","username@example.com")
+            const password = prompt("請輸入密碼","12345678")
+            if(username === "Justmore5mins" && password === "Notes@chshs108"){
+                location.href = "backstage.html"
+            }
+        }
     </script>
     <style>
         h3 select{display: inline;}
@@ -34,6 +42,11 @@
 </head>
 <body>
     <h2>下載項目</h2>
+    <button onclick="login()">後台登入</button>
+    <h2>正式版</h2>
+    <select name="科目" id="subject">
+        <option value="b">生物</option>
+    </select>
     <select name="學期" id="semester">
         <option value="113">113</option>
     </select>
