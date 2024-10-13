@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文件管理</title>
+    <script src="backend.js" defer crossorigin></script>
+</head>
+<body>
+    <h2>現有檔案列表</h2>
+    <div id="filelist"></div>
+    <p>在檔案上傳的時候須遵守命名規範以便整理</p>
+    <div>
+        <input type="file" name="選擇檔案" id="uploadfile" style="display: inline;" accept=".pdf,.jpg">
+        <button onclick="upload()">上傳檔案</button>
+    </div>
+    <button style=" display: inline;" onclick="remove()">刪除檔案</button>
+</body>
+</html>

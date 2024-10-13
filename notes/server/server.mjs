@@ -31,10 +31,9 @@ app.post("/upload",upload.single("file"), (req,res) =>{
     }
 })
 
-//ND
 app.delete("/delete",(req,res) => {
     const filenameToDelete = req.body.target; // Assuming the filename to delete is sent in the request body
-
+    console.log(filenameToDelete)
     if (!filenameToDelete) {
         return res.status(400).send("Filename is required");
     }
@@ -64,7 +63,7 @@ app.delete("/delete",(req,res) => {
             }
 
             // Delete the actual file from the "documents" directory
-            const filePath = `documents/${filenameToDelete}`;
+            const filePath = `documents/${filenameToDelete}${filenameToDelete === "copyright"? ".jpg": ".pdf"}`;
             fs.unlink(filePath, (unlinkErr) => {
             if (unlinkErr) {
                 console.error("Error deleting file:", unlinkErr);
@@ -83,10 +82,10 @@ app.delete("/delete",(req,res) => {
     });
 })
 
-app.listen(port, () => {
-    console.log(`server is running on ${port}`)
-})
-
 app.get("/", (req,res) => {
     res.send("Hello World")
+})
+
+app.listen(port, () => {
+    console.log(`server is running on ${port}`)
 })
