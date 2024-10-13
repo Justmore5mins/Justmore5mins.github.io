@@ -5,19 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="script.js" defer crossorigin></script>
     <style>
-        h3 select{display: inline;}
+        h3,select{display: inline;}
+        .content{text-align: center;}
+        td{text-align: center;}
+        table, td, th{
+           
+            font-size: 20px;
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
     </style>
     <title>筆記下載</title>
 </head>
 <body>
     <h2>下載項目</h2>
     <div id="backlogin"></div>
-    <select name="科目" id="subject"></select>
-    <select name="學期" id="semester"></select>
-    <select name="段考" id="exam"></select>
-    <select name="版本" id="version"></select>
+    <h2>檔案們</h2>
+    <select name="檔案們" id="files"></select>
     <br>
     <button type="button" onclick="addbutton()">已閱讀創用CC授權條款</button><a href="https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode.zh-hant">協議內容</a>
     <div id="download"></div>
+    <hr>
+    <h2 class="content">命名解釋</h2>
+    <div style="float: left;">
+        <p>ch1130101(a)</p>
+        <p>ch:科目，定義見表</p>
+        <p>113:年份(學年度)</p>
+        <p>01:第n次段考</p>
+        <p>01:第m個版本,00為最終版</p>
+        <p>a:非必須，為半完成版(多為備份用)，會有最新的資料，但通常排版較差</p>
+    </div>
+    <table id="tables" style="width: 50%; right: 0px; float: right;">
+        <tr>
+            <th>科目</th>
+            <th>代碼</th>
+            <th>科目</th>
+            <th>代碼</th>
+        </tr>
+        <tr>
+            <td>國文</td>
+            <td>ch</td>
+            <td>公民</td>
+            <td>ci</td>
+        </tr>
+        <tr>
+            <td>英文</td>
+            <td>en</td>
+            <td>物理</td>
+            <td>ph</td>
+        </tr>
+        <tr>
+            <td>數學</td>
+            <td>ma</td>
+            <td>化學</td>
+            <td>ch</td>
+        </tr>
+        <tr>
+            <td>歷史</td>
+            <td>hi</td>
+            <td>生物</td>
+            <td>bi</td>
+        </tr>
+        <tr>
+            <td>地理</td>
+            <td>ge</td>
+            <td>地科</td>
+            <td>es</td>
+        </tr>
+    </table>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><span property="dct:title">上課筆記</span> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://www.facebook.com/profile.php?id=100038609714796">310269游子軒</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-ND 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nd.svg?ref=chooser-v1" alt=""></a></p> 
 </body>
 </html>

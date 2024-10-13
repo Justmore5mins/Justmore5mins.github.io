@@ -11,7 +11,11 @@ window.onload = function(){
                 text = `${table[res[file].substring(0,2)]}`
                 text += `${res[file].substring(2,5)}學年度`
                 text += `第${res[file].substring(6,7)}次段考`
-                text += `第${res[file].substring(8,9)}${res[file].length === 10 ? `${res[file][9]}版` : "版"}`
+                if(res[file].substring(8,9) === "0"){
+                    text += "最終版";
+                }else{
+                    text += `第${res[file].substring(8,9)}${res[file].length === 10 ? `${res[file][9]}版` : "版"}`
+                }
             }
             filelist.innerHTML += `<li>${res[file]} -- ${text}</li>`
         }
