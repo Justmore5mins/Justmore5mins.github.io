@@ -1,0 +1,132 @@
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>base</title>
+    <style>
+        h2{
+            font-size: 35px
+        }
+        p{
+            font-size: 30px;
+        }
+        code {
+            font-family: monospace;
+
+        }
+        #center{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2 id="center">底盤base</h2>
+    <h2>宣告</h2>
+    <pre><code>
+package frc.robot;
+
+//引入函式庫
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkLowLevel.MotorType;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+
+//底盤馬達初始化
+ private CANSparkMax Left_Follower = new CANSparkMax(6, MotorType.kBrushless);
+ private CANSparkMax Left_Leader = new CANSparkMax(62, MotorType.kBrushless);
+ private CANSparkMax Right_Follower = new CANSparkMax(1, MotorType.kBrushless);
+ private CANSparkMax Right_Leader = new CANSparkMax(10, MotorType.kBrushless);
+
+ //底盤控制初始化
+ private DifferentialDrive drive = new DifferentialDrive(Left_Leader, Right_Leader);
+
+    </code></pre>    
+    <hr>
+    <div style="width: 50%; float: left;">
+        <p style="font-size: 25px;">
+            由於我需要可以在前進的同時可以向左右轉彎，我不能將底盤驅動寫死(像左邊這樣):
+    因此我看上了內建函式DifferentialDrive，但是他似乎適用於兩輪驅動，後來我找到了follow這個函式，讓後輪跟隨前輪移動，這樣就變四輪驅動了。
+        </p>
+        <pre><code>
+            //底盤前後跟隨(後跟前)
+       Left_Follower.follow(Left_Leader);
+       Right_Follower.follow(Right_Leader);
+        </code></pre>
+    </div>
+    <div style="width: 50%; float: right;">
+        <pre><code>
+            turnSpee = 0.6 * joystick.getRawAxis(1);
+            driveSpee = 0.4 * joystick.getRawAxis(4);
+
+            if (joystick.getRawAxis(1)>=0.2) {
+                motor6.set(-turnSpee);
+                motor8.set(-turnSpee);
+                motor11.set(turnSpee);
+                motor62.set(-turnSpee);
+            } 
+            else if (joystick.getRawAxis(1)<=-0.2) {
+            motor6.set(-turnSpee);
+            motor8.set(-turnSpee);
+            motor11.set.........略
+            }
+        </code></pre>
+    </div>
+    <hr style="width: 100%;">
+    <h2 style="width: 100%">注意事項</h2>
+    <p>
+        注意事項:
+        每次將機器開電時馬達控制器follow的編號都要注意,62號都會follow1號,導致底盤無法正常運行。
+        (故障排除:將follow函式兩行由robotinit改到robotPeriodic執行，並將底盤馬達全部重刷)
+    </p>
+    <hr>
+    <h2 id="center">特殊功能</h2>
+    <div>
+        <p style="width: 50%; float: left;">
+            1.加速:
+因為要利用intake去吸起note時速度不能太快，我需要用一個加速鍵，而我希望操作者操作時能不用一直按著按鍵，我利用一個變數儲存狀態，讓功能可以持續交互。
+        </p>
+        <pre><code>
+
+            private double add=1;  //速度控制暫存
+            private int doubleSpeed = 0;
+              if(xbox.getLeftBumperPressed()){  //底盤速度調整
+                if(doubleSpeed==0){
+                  doubleSpeed = 1;  //高速模式
+                  add = 1.9;
+                }else if(doubleSpeed==1){
+                  doubleSpeed = 0;  //低速模式
+                  add = 1;
+                }}
+        </code></pre>
+    </div>
+    <div>
+        <p style="width: 50%; float: left;">
+            2.前後轉向:
+由於intake跟shooter在不同方向，需要用到shooter時必須將底盤整個轉過來，前進跟後退的方向會相反，因此我設計了一個按鍵可以將前進後退交換，方法跟上面的一樣。
+        </p>
+        <pre style="width: 50%; float: right;"><code>
+            //速度控制暫存
+            private int reveres = 1;
+            if(xbox.getRightBumperPressed()){
+                if(reveres==1){
+                reveres = -1;  //對調模式
+                }else if(reveres==-1){
+                  reveres = 1;  //正常模式
+                }
+              }          
+        </code></pre>
+    </div>
+    <div>
+        <p style="width: 50%; float: left;">
+            3.驅動:
+            前進後退為xbox的左蘑菇頭y軸
+            左右轉為xbox的右蘑菇頭x軸
+            add為加速，當我按下xbox的LB時add會變1.9。
+            reverse為反轉，當我按下xbox的RB時reverse會變-1。            
+        </p>
+        <pre style="width: 50%; float: right;"><code>
+            //底盤速度讀取
+            double forwardx = xbox.getLeftY()*-0.4*add*reveres;
+            double turnx = xbox.getRightX()*0.4*add;         
+        </code></pre>
+    </div>
+</body>

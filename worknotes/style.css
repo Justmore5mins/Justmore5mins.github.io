@@ -1,0 +1,16 @@
+#center {
+    text-align: center;
+}
+
+img{
+    width: 300px;
+}
+
+span{
+    font-size: 30px;
+}
+
+button{
+    background-color: transparent;
+    border: 0px;
+}

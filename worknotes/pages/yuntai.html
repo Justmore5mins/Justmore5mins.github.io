@@ -1,0 +1,98 @@
+<html lang="zh-tw">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>yuntai</title>
+    <style>
+      h2 {
+        font-size: 35px;
+      }
+      p {
+        font-size: 30px;
+      }
+      code {
+        font-family: monospace;
+      }
+      #center {
+        text-align: center;
+      }
+      hr {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="width: 50%; float: left">
+      <h2 id="center">宣告</h2>
+      <pre><code>
+//引入函式庫
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkLowLevel.MotorType;
+
+//初始化
+private CANSparkMax yuntai = new CANSparkMax(55, MotorType.kBrushless);
+    </code></pre>
+    </div>
+    <img src="../imgs/yuntai.jpg" alt="yuntai" style="float: left" />
+    <hr />
+    <div style="width: 50%; float: left">
+      <h2 id="center">功能</h2>
+      <p>
+        能讓shooter射出去的角度改變。
+        當按下joystick的LB鍵為Shooter轉軸向前轉，當按下joystick的RB鍵為Shooter轉軸向後轉
+      </p>
+    </div>
+    <pre style="width: 50%; float: right"><code>
+    if(stick.getRawButton(5)&& motorPos<=51){
+        //Shooter轉軸向前轉
+        yuntai.set(0.5);
+    }
+    else if(stick.getRawButton(6)&& motorPos>=0){
+        //Shooter轉軸向後轉
+        yuntai.set(-0.5)
+    }else{
+        //Shooter停止
+        yuntai.set(0);  
+    } 
+    </code></pre>
+    <hr />
+    <h2 id="center">特殊功能</h2>
+    <div>
+      <p style="width: 50%; float: left">
+        1.編碼器:
+        為了不要讓yuntai轉的角度超過極限範圍，我需要一個能讓馬達轉動的角度控制在一定的範圍。
+        一開始的想法是在極限範圍處裝上極限開關，這樣觸發到就會停止，但這個做法極限開關有可能會壞掉，並且還要規劃讓出配電空間之類的，很花時間，因此我在網路上找到了編碼器。
+        上面整合程式碼，當馬達正轉數值為正，反轉為負，因此當motorPos小於0或超過51便會停下
+      </p>
+      <pre width="50%; float:right;"><code>
+package frc.robot;
+
+//引入函式庫
+import com.revrobotics.RelativeEncoder;
+
+//shooter編碼器初始化
+private RelativeEncoder encoder55;
+   encoder55 = yuntai.getEncoder();
+   yuntai.restoreFactoryDefaults();
+   //encoder55.setPosition(0);這行是用來更新編碼器初始位置
+
+//編碼器數值
+   double motorPos = encoder55.getPosition();
+
+//編碼器數值監測
+   System.out.println(motorPos);
+            </code></pre>
+    </div>
+    <hr>
+    <h2 id="center">注意事項</h2>
+    <p>
+        每次開電時編碼器的初始位置都會刷新,需要開電前每次都將馬達轉回正確的位置。
+        (故障排除: 如果編碼器讀數異常,先檢查馬達是否回到預設初始位置,之後嘗試重置編碼器)
+        </p>
+  </body>
+  <h2 id="center">心得</h2>
+  <p>
+在研究編碼器的過程中，我學會了關於硬件配置與數據模式。由於編碼器的種類眾多，有磁性編碼器、軸編碼器等依照感測方式不同區分；還有絕對編碼器和相對編碼器等考量數據持續性的分類。由於一開始我並不了解編碼器的運作原理，因此犯下以為團隊是使用通孔編碼器，而不是正交編碼器的愚蠢錯誤。再經過仔細研究編碼器運作原理後，終於了解了各種分類的規則與原理，也順利克服問題使編碼器正常運作。
+
+  </p>
+</html>
