@@ -3,21 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>shooter</title>
-    <style>
-        h2{
-            font-size: 35px
-        }
-        p{
-            font-size: 30px;
-        }
-        code {
-            font-family: monospace;
-
-        }
-        #center{
-            text-align: center;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -73,6 +59,7 @@ private CANSparkMax follower = new CANSparkMax(27, MotorType.kBrushless);
               }else if(stick.getRawButton(3)){ //吸note至準備位置
                intake.set(-0.5*note);
                  follower.set(-0.5*note);
+              }
               else{  //全部馬達停止
                 intake.set(0);
                 follower.set(0);
@@ -120,5 +107,5 @@ private CANSparkMax follower = new CANSparkMax(27, MotorType.kBrushless);
     }
         </code></pre>
     </div>
-    
+
 </body>
