@@ -1,0 +1,33 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../style.css">
+    <title>Raspberry Pi 5</title>
+</head>
+<body>
+    <h1 class="center">Raspberry Pi 5</h1>
+    <p>The device that is now mainly used</p>
+    <p style="color: rgb(0, 183, 0);">and its performance is enough to run our model(around 10 fps on yolov8n based model)</p>
+    <hr>
+    <h2 class="center">The way to connect roborio</h2>
+    <p>Don't forget...</p>
+    <li>Use ethernet</li>
+    <li>Check IP if it is correct(1)</li>
+    <li>make sure everything is connected</li>
+
+    <p>Test if it works</p>
+    <p>1) ping roborio-8569-frc.local(on raspberry pi)</p>
+    <p>2) ping frc8569.local(on roborio) (2)</p>
+    <p>3) try send a request and check if it has correct responces</p>
+    <hr>
+    <h2 style="color: #3796fc;" class="center">unsolved problems</h2>
+    <li>planned to use httpd server to handle requests(streamming data), but unable to use roborio to handle the server.</li>
+    <hr>
+
+    (1) The IP of RoboRIO and Raspberry Pi should be 10.TE.AM.X,(rio=2,pi=55, assigned by radio using DHCP)<br>
+    (2) use ssh roborio-8569-frc.local to connect, leave password blank if it requires you.<br>
+    (2-1) When we use hsotname.local, it asks "whose name is hostname" and replaces with its IP, if it can't connect by .local domain, try IP instead.
+</body>
+</html>

@@ -1,0 +1,20 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../style.css">
+    <title>Raspi 4 With NCS2</title>
+</head>
+<body>
+    <h1 class="center">Raspberry Pi 4 with <abbr title="Intel Neural Compute Stick">NCS</abbr>2</h1>
+    <hr>
+    <p>Due to the Raspberry Pi 4's limited performance, we use NCS 2 to run the model for better efficiency</p>
+    <p>While collecting data, we discovered some problems</p>
+    <li>NCS2 is only compatible with its specific program(OpenVino) and it is not supported NCS2 from the 2022.3 version</li>
+    <li>and it support untill python 3.10</li>
+    <li>so we need to downgrade yolo version</li>
+    <li style="color: red;">when python3.10, OpenVino doesn't support Raspberry Pi</li>
+
+</body>
+</html>
