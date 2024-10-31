@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOLOv8</title>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    <h1 class="center">YOLOv8</h1>
+    <p>The model we're using based on YOLOv8n, and we use the <a href="https://universe.roboflow.com/dark-eden-nuheg/frc-note-detection-juhlj/dataset/9"></a>dataset to train 500 epochs(1), it can reaches 0.8~0.9 confidence when real time detecting</p>
+    <hr>
+    <div class="center" style="width: 50%; float: left;">
+        <h3>Basic Model Information(data recorded by WanDB)</h3>
+        <table class="center" style="font-size: larger; width: 85%;">
+        
+            <tr>
+                <th>Model type</th>
+                <td>YOLOv8n</td>
+            </tr>
+            <tr>
+                <th>model paramaters</th>
+                <td>3012993</td>
+            </tr>
+            <tr>
+                <th>train model/GFLOPs</th>
+                <td>8.205</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="center" style="width: 50%; float: right;">
+        <h3>Performace Information(model excuted with ncnn format)</h3>
+        <table style="width: 100%; font-size: larger;" class="center">
+            <tr>
+                <th><abbr title="MacBook Pro 2020,A2251">Intel 1038NG7</abbr></th>
+                <td>20fps(50ms)</td>
+            </tr>
+            <tr>
+                <th>Raspberry Pi 5</th>
+                <td>10fps(100ms)</td>
+            </tr>
+            <tr>
+                <th>Raspberry Pi 4</th>
+                <td>0.5fps(2000ms)</td>
+            </tr>
+        </table>
+    </div>
+    <hr>
+    <p>note: other formats'(like ncnn) performance(fps) is better than original pt format, so don't forget to export</p>
+    (1) We set the training for 1000 epochs, but it stopped early as the system detected no significant improvement in the model for an extended period.
+</body> 
+</html>
