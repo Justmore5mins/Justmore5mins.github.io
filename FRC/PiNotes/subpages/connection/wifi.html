@@ -1,0 +1,76 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WiFi</title>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    <h1 class="center">Connect Using WiFi</h1>
+    <hr>
+    <p>it can use at low freequency communication like regularly place detection(by AprilTag), recommend Interval: 2sec</p>
+    Raspberry Pi (server) side:
+    use flask to handle server(example code)
+    <pre><code lang="python">
+    from flask import Flask
+    from flask_cors import CORS
+
+    PORT = 80
+
+    app = Flask(__name__)
+    app.config['CORS_HEADERS'] = 'Content-Type'
+    CORS(app)
+
+    @app.route("/")
+    def hello_world():
+        return "Hello, World!"
+ 
+    if __name__ == "__main__":
+        app.run(debug=True,port=PORT)
+    </code></pre>
+    RoboRIO side(client side)
+    <pre><code>
+    package frc.robot.subsystems;
+
+    import java.net.*;
+    import java.io.*;
+    import frc.robot.Constants;
+
+
+    public class client {
+        private Socket clientSocket;
+        private PrintWriter out;
+        private BufferedReader in;
+
+        public void startConnection() throws IOException{
+            clientSocket = new Socket(Constants.IP, Constants.ServerPort);
+            out = new PrintWriter(clientSocket.getOutputStream(),true);
+            in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+
+            String inputline;
+            int DeltaDistance;
+            while ((inputline = in.readLine()) != null) {
+                DeltaDistance = Integer.parseInt(inputline);
+                if(DeltaDistance == 0){
+                    continue; //do something if item is centered;
+                }else{
+                    continue; //use pid controller
+                }
+            }
+        }
+
+        public String sendMessage(String msg) throws IOException{
+            out.println(msg);
+            String resp = in.readLine();
+            return resp;
+        }
+
+        public void StopConnection() throws IOException{
+            in.close();
+            out.close();
+            clientSocket.close();
+        }
+    }
+    </code></pre>
+</body>
+</html>

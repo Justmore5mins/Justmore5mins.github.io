@@ -1,0 +1,56 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="3">
+    <meta name="author" content="Justmore5mins">
+    <title>YOLO訓練教學</title>
+</head>
+<body>
+    <h1>YOLO訓練教學</h1>
+    <hr>
+    <p>此頁面由AMD Together We Advanced贊助播出</p>
+    <hr>
+    <p>先備知識 <a href="https://www.redhat.com/zh-tw/topics/linux">Linux是什麼</a> <a href="https://www.geeksforgeeks.org/what-is-ubuntu/">ubuntu入門</a> <a href="unix.html">unix-based指令教學</a> <a href="https://www.w3schools.com/python/python_intro.asp">python 基本語法教學</a></p>
+    <h2>模型的選擇</h2>
+    <p><a href="https://docs.ultralytics.com">YOLO系列模型</a>通常有以下種類可以選擇(由小到大排序)</p>
+    <ul>
+        <li>YOLOvXn  nano</li>
+        <li>YOLOvXs  small</li>
+        <li>YOLOvXm  medium</li>
+        <li>YOLOvXl  large</li>
+        <li>YOLOvXx  extra large</li>
+    </ul>
+    <h2>訓練方式(python script / <abbr title="Command Line Interface">CLI</abbr>)</h2>
+    <p>requirements.txt</p>
+    <ul>
+        <li>ultralytics</li>
+        <li>torch</li>
+        <li>torch with cuda *Optional</li>
+    </ul>
+    <p>train.py</p>
+    <pre><code>
+    from ultralytics import YOLO
+    model = YOLO("ModelYouWant.pt")
+    model.to(device) #cuda可以用顯卡加速訓練(需要裝torch with cuda),蘋果晶片可以用mps加速
+
+    if __name__ == "__main__":
+        model.train(data="path/to/your/data.yaml", epochs=epochs, cache=False, resume=resume)
+    </code></pre>
+    <p>指令</p>
+    <p>yolo train model=ModelYouWant.p data=path/to/your/data.yaml epochs=epochs cache=False resume=resume device=device</p>
+    <p><a href="https://docs.ultralytics.com/usage/cfg/#modes">名詞解釋</a></p>
+    <ul>
+        <li>data:資料集的路徑(yaml檔)，建議以絕對路徑為主</li>
+        <li>epochs:訓練回數，預設是100，常用2000回讓他EarlyStop(如果沒有的話要注意模型有沒有正常收斂)</li>
+        <li>cache: 決定是否要將圖片快取在硬碟或記憶體裡，或者是直接不快取(可以減緩IO的壓力)</li>
+    </ul>
+    <h2>後續使用</h2>
+    <p>可以用自己寫的Script來圖像化訓練結果eg. <a href="https://github.com/Justmore5mins/YOLO-Detector/blob/GUI/detect.py">GitHub</a></p>
+    <h2>TroubleShooting</h2>
+    通用：確認自己的dataset有沒有問題，看cuda版本有沒有錯(檢查方式：nvidia-smi)
+    <ul>
+        <li><abbr title="Device Side Assert">DSA</abbr>:確認裝置的cuda版本跟PyTorch的cuda版本是否一樣</li>
+    </ul>
+</body>
+</html>
