@@ -1,5 +1,3 @@
-import Typed from "./node_modules/typed.js/dist/typed.module.js";
-
 window.onload = function(){
     //----------------------------
 
