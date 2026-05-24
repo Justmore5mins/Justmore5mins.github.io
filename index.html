@@ -11,11 +11,6 @@
 <body>
     <header class="titlebar">
         <h1 style="font-size: 3vh;">游子軒 | Justmore5mins</h1>
-        <div class="contact">
-            <a href="https://discord.com/users/1089467076273524816"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" alt="" ></a>
-            <a href="https://www.instagram.com/justmore5mins/"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="" ></a>
-            <a href="https://github.com/Justmore5mins"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111432.png" alt="github"></a>
-        </div>
     </header>
 
     <div class="TitleImage">
@@ -29,22 +24,74 @@
 
     <section class="AboutMe">
         <h1>我是...</h1>
-        <div class="card">
-            <h1>高中生</h1>
-            <hashtag>學經歷</hashtag>
-            <img src="https://cdn-icons-png.flaticon.com/512/2602/2602432.png" alt="">
-        </div>
-        <div class="card">
-            <h1>機器人社隊長</h1>
-            <hashtag>機器人 STEM教育</hashtag>
-            <img src="https://frc.codecat.tw/_next/image?url=%2Flogo.png&w=640&q=75" alt="">
-        </div>
+        <button onclick="showPanel('study')">
+            <div class="card clickable">
+                <h1>高中生</h1>
+                <hashtag>學經歷</hashtag>
+                <img src="https://cdn-icons-png.flaticon.com/512/2602/2602432.png" alt="">
+            </div>
+        </button>
 
-        <div class="card">
-            <h1>開發者</h1>
-            <hashtag>毫無反應就是開發者</hashtag>
-            <img src="https://cdn-icons-png.flaticon.com/512/1336/1336890.png" alt="">
+        <button onclick="hidePanel()">
+            <div class="overlay" id="study">
+                <div class="panel card" style="height: 45vh;">
+                    <h1 style="top: 0;">學經歷</h1>
+                    <ul style="position: relative; top: -5%; list-style-position: inside; margin-top: 5vh; font-size: 2.5vh; display: inline;">
+                        <li>板橋國小 - PCPS</li>
+                        <ul>
+                            <li>板橋國小管樂團</li>
+                        </ul>
+                        <li>板橋國中 - BQJH</li>
+                        <ul>
+                            <li>科展 - 希羅噴泉</li>
+                            <li>科展 - 智慧家居系統</li>
+                            <li>特殊展能市長獎</li>
+                        </ul>
+                        <li>中和高中 - ZHSH</li>
+                        <ul>
+                            <li>FRC機器人競賽</li>
+                            <li>新北市創客日協辦</li>
+                        </ul>
+                    </ul>
+                </div>
+            </div>
+        </button>
+
+        <button onclick="showPanel('robotics')">
+             <div class="card clickable">
+                <h1>機器校隊隊長</h1>
+                <hashtag>機器人 STEM教育</hashtag>
+                <img src="https://frc.codecat.tw/_next/image?url=%2Flogo.png&w=640&q=75" alt="">
+            </div>
+        </button>
+        <button onclick="hidePanel()">
+            <div class="overlay" id="robotics" >
+                <div class="panel card" style="height: 45vh;" id="robotics">
+                    <h1 style="top: 0;">機器人校隊</h1>
+                    <p>
+                        在高一時，我參加了學校的機器人校隊，並擔任程式手手的角色。在高二時，因為有老師的悉心栽培，成為了機器人校隊的隊長與首席程式設計。我們於2026年初訪夏威夷參加區域賽，雖然並未得名，但我們創造了我們隊伍有史以最好的名次 - 參加聯盟選擇。這對於我們是意義非凡的一次體驗。即使最後並沒有獲得身前身後名，但這也為我們的青春寫下了輝煌的一頁。
+                    </p>
+                    <p>關於更多有關機器人競賽的資訊請看<a href="subpages/FRC.html">這裡</a></p>
+                </div>
+            </div>
+        </button>
+        
+
+        <button onclick="showPanel('developer')">
+            <div class="card clickable">
+                <h1>開發者</h1>
+                <hashtag>毫無反應就是開發者</hashtag>
+                <img src="https://cdn-icons-png.flaticon.com/512/1336/1336890.png" alt="">
+            </div>
+        </button>
+        <button onclick="hidePanel()">
+             <div class="overlay" id="developer" >
+                <div class="panel card" style="height: 10vh;" id="robotics">
+                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><h1 style="top: 0;">推薦影片</h1></a>
+                </div>
+            </div>
         </div>
+        </button>
     </section>
 
     <section class="SkillTree">

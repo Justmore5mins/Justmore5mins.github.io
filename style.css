@@ -69,6 +69,15 @@ body {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+button{
+    background-color: transparent;
+    color: white;
+    border: none;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 .TitleImage h1{
     position: absolute;
     z-index: 2;
@@ -177,4 +186,36 @@ a{
 .SkillTree div.skill progress{
     float: 1;
     width: 60%;
+}
+
+.card button{
+    position: absolute;
+    right: 5%;
+    top: 10%;
+    border: none;
+    font-size: 5vw;
+}
+
+.panel.card{
+    height: auto;
+}
+
+.panel.card h1{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.overlay{
+    display: none;
+}
+
+.card p{
+    width: 80%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2.5vh;
 }
