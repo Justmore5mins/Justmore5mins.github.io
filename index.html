@@ -1,156 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="author" content="Justmore5mins">
-    <meta name="description" content="A website for Justmore5mins">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="copyright" content="Justmore5mins">
+    <meta name="description" content="游子軒的個人網站">
     <link rel="stylesheet" href="style.css">
-    <script type="module" src="script.js" defer></script>
+    <script src="https://unpkg.com/typed.js@3.0.0/dist/typed.umd.js"></script>
+    <script src="script.js" type="module"></script>
+    <!-- https://colorhunt.co/palette/222831393e46948979dfd0b8 -->
 </head>
+
 <body>
-    <header class="titlebar">
-        <h1 style="font-size: 3vh;">游子軒 | Justmore5mins</h1>
-    </header>
-
-    <div class="TitleImage">
-        <img src="https://www.gadgetmatch.com/wp-content/uploads/2021/02/rick-astley-never-gonna-give-you-up-4k.jpg" alt="">
-        <div class="HoverTool"></div>
-        <h1>永遠不會放棄你</h1>
-        <p> - Rick Astley</p>
-        <continue>下面還有東西</continue>
-        <span class="material-symbols-outlined">keyboard_arrow_down</span>
-    </div>
-
-    <section class="AboutMe">
-        <h1>我是...</h1>
-        <button onclick="showPanel('study')">
-            <div class="card clickable">
-                <h1>高中生</h1>
-                <hashtag>學經歷</hashtag>
-                <img src="https://cdn-icons-png.flaticon.com/512/2602/2602432.png" alt="">
-            </div>
-        </button>
-
-        <button onclick="hidePanel()">
-            <div class="overlay" id="study">
-                <div class="panel card" style="height: 45vh;">
-                    <h1 style="top: 0;">學經歷</h1>
-                    <ul style="position: relative; top: -5%; list-style-position: inside; margin-top: 5vh; font-size: 2.5vh; display: inline;">
-                        <li>板橋國小 - PCPS</li>
-                        <ul>
-                            <li>板橋國小管樂團</li>
-                        </ul>
-                        <li>板橋國中 - BQJH</li>
-                        <ul>
-                            <li>科展 - 希羅噴泉</li>
-                            <li>科展 - 智慧家居系統</li>
-                            <li>特殊展能市長獎</li>
-                        </ul>
-                        <li>中和高中 - ZHSH</li>
-                        <ul>
-                            <li>FRC機器人競賽</li>
-                            <li>新北市創客日協辦</li>
-                        </ul>
-                    </ul>
-                </div>
-            </div>
-        </button>
-
-        <button onclick="showPanel('robotics')">
-             <div class="card clickable">
-                <h1>機器校隊隊長</h1>
-                <hashtag>機器人 STEM教育</hashtag>
-                <img src="https://frc.codecat.tw/_next/image?url=%2Flogo.png&w=640&q=75" alt="">
-            </div>
-        </button>
-        <button onclick="hidePanel()">
-            <div class="overlay" id="robotics" >
-                <div class="panel card" style="height: 45vh;" id="robotics">
-                    <h1 style="top: 0;">機器人校隊</h1>
-                    <p>
-                        在高一時，我參加了學校的機器人校隊，並擔任程式手手的角色。在高二時，因為有老師的悉心栽培，成為了機器人校隊的隊長與首席程式設計。我們於2026年初訪夏威夷參加區域賽，雖然並未得名，但我們創造了我們隊伍有史以最好的名次 - 參加聯盟選擇。這對於我們是意義非凡的一次體驗。即使最後並沒有獲得身前身後名，但這也為我們的青春寫下了輝煌的一頁。
-                    </p>
-                    <p>關於更多有關機器人競賽的資訊請看<a href="subpages/FRC.html">這裡</a></p>
-                </div>
-            </div>
-        </button>
-        
-
-        <button onclick="showPanel('developer')">
-            <div class="card clickable">
-                <h1>開發者</h1>
-                <hashtag>毫無反應就是開發者</hashtag>
-                <img src="https://cdn-icons-png.flaticon.com/512/1336/1336890.png" alt="">
-            </div>
-        </button>
-        <button onclick="hidePanel()">
-             <div class="overlay" id="developer">
-                <div class="panel card" style="height: 10vh;" id="robotics">
-                    <h1>既然點都點了就看看<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">推薦影片吧</a></h1>
-                </div>
+    <nav>
+        <div class="navbar">
+                <img src="https://2024-dailyview.s3.ap-northeast-1.amazonaws.com/Content/ueditor/net/upload1/2021-09/d2fc6feb-a48e-4ff6-8cd9-689a0cb43ff5.png" alt="" style="height: 6vh; border-radius: 4vh; position: relative; top: 3vh; transform: translateY(-50%);">
+                <h1 style="display: flex; align-items: center;">游子軒</h1>
             </div>
         </div>
-        </button>
-    </section>
-
-    <section class="SkillTree">
-        <h1>奇怪的技能樹</h1>
-        <div class="skill">
-            <h1>FRC Java</h1>
-            <progress value="80" max="100"></progress>
-        </div>
-        <div class="skill">
-            <h1>Arduino</h1>
-            <progress value="65" max="100"></progress>
-        </div>
-        <div class="skill">
-            <h1>網頁設計</h1>
-            <progress value="65" max="100"></progress>
-        </div>
-        <div class="skill">
-            <h1>Java</h1>
-            <progress value="60" max="100"></progress>
-        </div>
-        <div class="skill">
-            <h1>C/C++</h1>
-            <progress value="50" max="100"></progress>
-        </div>
-        <div class="skill">
-            <h1>Python</h1>
-            <progress value="50" max="100"></progress>
-        </div>
-    </section>
-
-    <section class="PreviousProject">
-        <h1>做過的酷東西</h1>
-        <a href="https://github.com/FRC-8569/Finalist-2026">
-            <div class="card">
-                <h1>2026年機器人的程式</h1>
-                <hashtag>FRC 2026 機器人</hashtag>
-            </div>
-        </a>
-        <div class="card">
-            <h1>(類似)蕃茄鐘</h1>
-            <hashtag>讀書好朋友</hashtag>
-            <span>還在線上化所以按下去沒反應是正常的</span>
-        </div>
-        <a href="">
-            <div class="card">
-                <h1>這個網站</h1>
-                <hashtag>可能是遞迴？</hashtag>
-            </div>
-        </a>
-    </section>
-
-    <hr style="width: 80vw; max-width: 650px; color: #aeaeae; margin-top: 4vh; margin-bottom: 4vh;">
-
-    <section class="ContactMe">
-        <h1>找到我</h1>
-        <custom-contact img="https://cdn-icons-png.flaticon.com/512/5968/5968534.png" href="mailto:austinyu0607@gmail.com" name="電子信箱">傳電子郵件給我</custom-contact>
-        <custom-contact img="https://github.com/fluidicon.png" href="https://github.com/Justmore5mins" name="GitHub">放我寫的程式的地方</custom-contact>
-        <custom-contact img="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/webp/maker-world-dark.webp" href="https://github.com/Justmore5mins" name="MakerWorld">放我建模的地方</custom-contact>
-        <custom-contact img="https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/66e3d80db9971f10a9757c99_Symbol.svg" href="https://discord.com/users/1089467076273524816" name="Discord" end>聊天軟體</custom-contact>
+    </nav>
+    <section class="TitleImage">
+        <img src="images/TitleImage.jpg" alt="">
+        <h1>游子軒 | Justmore5mins</h1>
+        <p id="HashTags"></p>
     </section>
 </body>
-</html>
