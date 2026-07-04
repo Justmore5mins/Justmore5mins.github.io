@@ -207,11 +207,11 @@
       });
     }
   }
-})({"cKjhJ":[function(require,module,exports,__globalThis) {
+})({"5j6Kf":[function(require,module,exports,__globalThis) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
-var HMR_SERVER_PORT = 80;
+var HMR_SERVER_PORT = 1234;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "439701173a9199ea";
 var HMR_USE_SSE = false;
@@ -803,7 +803,7 @@ var classCallCheck = function(instance, Constructor) {
  * Created by Sergiu Șandor (micku7zu) on 1/27/2017.
  * Original idea: https://github.com/gijsroge/tilt.js
  * MIT License.
- * Version 1.8.1
+ * Version 1.8.0
  */ var VanillaTilt = function() {
     function VanillaTilt(element) {
         var settings = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
@@ -886,10 +886,7 @@ var classCallCheck = function(instance, Constructor) {
     VanillaTilt.prototype.destroy = function destroy() {
         clearTimeout(this.transitionTimeout);
         if (this.updateCall !== null) cancelAnimationFrame(this.updateCall);
-        this.element.style.willChange = "";
-        this.element.style.transition = "";
-        this.element.style.transform = "";
-        this.resetGlare();
+        this.reset();
         this.removeEventListeners();
         this.element.vanillaTilt = null;
         delete this.element.vanillaTilt;
@@ -1222,6 +1219,6 @@ const targetElements = [
     }
 ];
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["cKjhJ","a0t4e"], "a0t4e", "parcelRequire6aa4", {})
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["5j6Kf","a0t4e"], "a0t4e", "parcelRequire6aa4", {})
 
 //# sourceMappingURL=學測複習.31b563d9.js.map
