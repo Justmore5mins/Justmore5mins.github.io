@@ -12074,6 +12074,7 @@ html.sr .load-hidden {
 body {
   text-align: center;
   scroll-behavior: smooth;
+  background-color: #020420;
   font-family: Montserrat, sans-serif;
 }
 
@@ -12543,8 +12544,7 @@ section {
 }
 
 #projects {
-  color: #272341;
-  background-color: #fff;
+  color: #fff;
   margin-top: -10rem;
   padding-top: 15rem;
 }
